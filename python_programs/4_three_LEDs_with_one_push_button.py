@@ -26,19 +26,19 @@ while True:
         previous_button_state = button_state
         if button_state == GPIO.HIGH:
             if led_index == 0:
-                # power on LED 1
+                ## power on LED 1
                 GPIO.output(LED_1_PIN, GPIO.HIGH)
                 GPIO.output(LED_2_PIN, GPIO.LOW)
                 GPIO.output(LED_3_PIN, GPIO.LOW)
                 led_index = 1
             elif led_index == 1:
-                # power on LED 2
+                ## power on LED 2
                 GPIO.output(LED_1_PIN, GPIO.LOW)
                 GPIO.output(LED_2_PIN, GPIO.HIGH)
                 GPIO.output(LED_3_PIN, GPIO.LOW)
                 led_index = 2
             else:
-                # power on LED 3
+                ## power on LED 3
                 GPIO.output(LED_1_PIN, GPIO.LOW)
                 GPIO.output(LED_2_PIN, GPIO.LOW)
                 GPIO.output(LED_3_PIN, GPIO.HIGH)
