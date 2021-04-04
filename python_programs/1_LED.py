@@ -8,7 +8,7 @@ GPIO.setup(LED_PIN, GPIO.OUT)
 # turn on this LED before making any input
 # GPIO.output(LED_PIN, GPIO.HIGH)
 
-## state = int(input(""))
+# state = int(input(""))
 state = int(input("Enter 0 to power off the LED, 1 to power on the LED: "))
 
 # if the state is 0 --> power off the LED
