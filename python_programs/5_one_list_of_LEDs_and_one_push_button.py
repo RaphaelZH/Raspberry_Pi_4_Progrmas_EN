@@ -6,7 +6,7 @@ import time
 # LED_2_PIN = 27
 # LED_3_PIN = 22
 LED_PIN_LIST = [17, 27, 22]
-
+# a simple modification here can be instead of a full change of code
 # LED_PIN_LIST = [17, 27]
 
 BUTTON_PIN = 26
@@ -66,7 +66,10 @@ while True:
         previous_button_state = button_state
         if button_state == GPIO.HIGH:
             power_on_selected_led_only(LED_PIN_LIST[led_index])
+            # passing to the next LED index
             led_index += 1
+            # adding a verification for avoiding the index exceeds the largest index of this list
+            # if led_index > len(LED_PIN_LIST) - 1:
             if led_index >= len(LED_PIN_LIST):
                 led_index = 0
 
