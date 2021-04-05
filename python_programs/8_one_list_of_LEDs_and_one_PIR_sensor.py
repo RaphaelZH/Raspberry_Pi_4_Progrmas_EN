@@ -5,11 +5,11 @@ LED_PIN_LIST = [17, 27, 22]
 PIR_PIN = 4
 
 
-def power_on_selected_led_only():
-    if not in LED_PIN_LIST:
+def power_on_selected_led_only(selected_led_pin):
+    if selected_led_pin not in LED_PIN_LIST:
         return
     for pin in LED_PIN_LIST:
-        if pin ==:
+        if pin == selected_led_pin:
             GPIO.output(pin, GPIO.HIGH)
         else:
             GPIO.output(pin, GPIO.LOW)
