@@ -27,16 +27,21 @@ for pin in LED_PIN_LIST:
 previous_pir_state = GPIO.input(PIR_PIN)
 led_index = 0
 
-while True:
-    time.sleep(0.01)
-    # here, this PIR sensor has replaced the button as control this LED
-    pir_state = GPIO.input(PIR_PIN)
-    if pir_state != previous_pir_state:
-        previous_pir_state = pir_state
-        if pir_state == GPIO.HIGH:
-            power_on_selected_led_only(LED_PIN_LIST[led_index])
-            led_index += 1
-            if led_index >= len(LED_PIN_LIST):
-                led_index = 0
+# avoiding the warning message when executing this program again
+try:
+    while True:
+        time.sleep(0.01)
+        # here, this PIR sensor has replaced the button as control this LED
+        pir_state = GPIO.input(PIR_PIN)
+        if pir_state != previous_pir_state:
+            previous_pir_state = pir_state
+            if pir_state == GPIO.HIGH:
+                power_on_selected_led_only(LED_PIN_LIST[led_index])
+                led_index += 1
+                if led_index >= len(LED_PIN_LIST):
+                    led_index = 0
+except KeyboardInterrupt:
+    # print("cleaning up GPIOs")
+    pass
 
 GPIO.cleanup()
