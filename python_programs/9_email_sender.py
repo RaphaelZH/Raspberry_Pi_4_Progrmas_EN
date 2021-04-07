@@ -14,7 +14,7 @@ with open("/home/pi/.local/share/.email_password", "r") as f:
 
 # reading the email recipients from the file where they are stored
 # returning all lines in the file, as a list where each line is an item in this list
-with open("/home/pi/.local/share/.email_recipients ", "r") as f:
+with open("/home/pi/.local/share/.email_recipients", "r") as f:
     recipients = f.readlines()
 
 # setting the Gmail account information
