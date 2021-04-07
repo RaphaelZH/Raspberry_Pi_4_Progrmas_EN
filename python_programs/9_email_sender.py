@@ -23,5 +23,7 @@ yag = yagmail.SMTP(gmail, password)
 # setting the parameters necessary for sending email
 yag.send(to=recipients,
          subject="first email",
-         contents="Hello from Raspberry Pi")
+         contents="Hello from Raspberry Pi",
+         # adding an attachment to this email
+         attachments="/home/pi/Pictures/Raspberry_Pi_Logo_PNG/RPi-Logo.png")
 print("Email sent")
