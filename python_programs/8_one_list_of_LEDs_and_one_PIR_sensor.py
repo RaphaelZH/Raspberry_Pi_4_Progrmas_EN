@@ -27,7 +27,7 @@ for pin in LED_PIN_LIST:
 previous_pir_state = GPIO.input(PIR_PIN)
 led_index = 0
 
-# avoiding the warning message when executing this program again
+# avoid the warning message when executing this program again
 try:
     while True:
         time.sleep(0.01)

@@ -4,7 +4,7 @@ from picamera import PiCamera
 
 FOLDER_NAME = "/home/pi/Camera"
 
-# checking if the target directory exists; if not, create it
+# check if the target directory exists; if not, create it
 if not os.path.exists(FOLDER_NAME):
     os.mkdir(FOLDER_NAME)
 
@@ -16,7 +16,7 @@ time.sleep(2)
 counter = 1
 
 while True:
-    # commanding Raspberry Pi to take pictures every 5 seconds
+    # command Raspberry Pi to take pictures every 5 seconds
     file_name = FOLDER_NAME + "/img" + str(counter) + ".jpg"
     counter += 1
     camera.capture(file_name)

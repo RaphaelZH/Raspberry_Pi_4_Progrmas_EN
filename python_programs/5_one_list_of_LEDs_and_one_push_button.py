@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
-# using a list can replace the following code
+# use a list can replace the following code
 # LED_1_PIN = 17
 # LED_2_PIN = 27
 # LED_3_PIN = 22
@@ -15,9 +15,9 @@ BUTTON_PIN = 26
 def power_on_selected_led_only(selected_led_pin):
     # data validation for avoiding the data out of the target list
     if selected_led_pin not in LED_PIN_LIST:
-        # returning here from the current function
+        # return here from the current function
         return
-    # using for loop can replace the following code
+    # use for loop can replace the following code
     # if led_index == 0:
     #     GPIO.output(LED_1_PIN, GPIO.HIGH)
     #     GPIO.output(LED_2_PIN, GPIO.LOW)
@@ -41,7 +41,7 @@ def power_on_selected_led_only(selected_led_pin):
 
 
 GPIO.setmode(GPIO.BCM)
-# using for loop can replace the following code
+# use for loop can replace the following code
 # GPIO.setup(LED_1_PIN, GPIO.OUT)
 # GPIO.setup(LED_2_PIN, GPIO.OUT)
 # GPIO.setup(LED_3_PIN, GPIO.OUT)
@@ -49,7 +49,7 @@ for pin in LED_PIN_LIST:
     GPIO.setup(pin, GPIO.OUT)
 GPIO.setup(BUTTON_PIN, GPIO.IN)
 
-# using for loop can replace the following code
+# use for loop can replace the following code
 # GPIO.output(LED_1_PIN, GPIO.LOW)
 # GPIO.output(LED_2_PIN, GPIO.LOW)
 # GPIO.output(LED_3_PIN, GPIO.LOW)
@@ -66,9 +66,9 @@ while True:
         previous_button_state = button_state
         if button_state == GPIO.HIGH:
             power_on_selected_led_only(LED_PIN_LIST[led_index])
-            # passing to the next LED index
+            # pass to the next LED index
             led_index += 1
-            # adding a verification for avoiding the index exceeds the largest index of this list
+            # add a verification for avoiding the index exceeds the largest index of this list
             # if led_index > len(LED_PIN_LIST) - 1:
             if led_index >= len(LED_PIN_LIST):
                 led_index = 0

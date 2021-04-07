@@ -17,22 +17,22 @@ GPIO.output(LED_1_PIN, GPIO.LOW)
 GPIO.output(LED_2_PIN, GPIO.LOW)
 GPIO.output(LED_3_PIN, GPIO.LOW)
 
-# checking current button state
+# check current button state
 previous_button_state = GPIO.input(BUTTON_PIN)
-# adding the index of one LED
+# add the index of one LED
 led_index = 0
 
 while True:
-    # making this while loop run at 100 Hertz
+    # make this while loop run at 100 Hertz
     # it does not matter that this command to be the beginning of or the end of this loop
     time.sleep(0.01)
-    # reading the current button state
+    # read the current button state
     button_state = GPIO.input(BUTTON_PIN)
-    # comparing the new button state with the previous button state
+    # compare the new button state with the previous button state
     if button_state != previous_button_state:
         # either this button going from low to high or high to low
         # in other words, either this button be pressed or be released
-        # setting the previous button state to the current button state
+        # set the previous button state to the current button state
         previous_button_state = button_state
         # each time when this button is pressed, the program executes the inside condition block
         if button_state == GPIO.HIGH:
@@ -41,21 +41,21 @@ while True:
                 GPIO.output(LED_1_PIN, GPIO.HIGH)
                 GPIO.output(LED_2_PIN, GPIO.LOW)
                 GPIO.output(LED_3_PIN, GPIO.LOW)
-                # setting the LED index to the next LED index
+                # set the LED index to the next LED index
                 led_index = 1
             elif led_index == 1:
                 # power on LED 2
                 GPIO.output(LED_1_PIN, GPIO.LOW)
                 GPIO.output(LED_2_PIN, GPIO.HIGH)
                 GPIO.output(LED_3_PIN, GPIO.LOW)
-                # setting the LED index to the next LED index
+                # set the LED index to the next LED index
                 led_index = 2
             else:
                 # power on LED 3
                 GPIO.output(LED_1_PIN, GPIO.LOW)
                 GPIO.output(LED_2_PIN, GPIO.LOW)
                 GPIO.output(LED_3_PIN, GPIO.HIGH)
-                # setting the LED index to the next LED index
+                # set the LED index to the next LED index
                 led_index = 0
 
 GPIO.cleanup()
