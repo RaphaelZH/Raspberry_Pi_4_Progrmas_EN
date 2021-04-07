@@ -25,5 +25,5 @@ yag.send(to=recipients,
          subject="first email",
          contents="Hello from Raspberry Pi",
          # adding an attachment to this email
-         attachments="/home/pi/Pictures/Raspberry_Pi_Logo_PNG/RPi-Logo.png")
+         attachments="/home/pi/Pictures/Raspberry_Pi_Logo/RPi-Logo.png")
 print("Email sent")
