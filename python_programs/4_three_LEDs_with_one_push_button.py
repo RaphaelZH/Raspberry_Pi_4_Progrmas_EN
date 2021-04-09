@@ -12,7 +12,7 @@ GPIO.setup(LED_2_PIN, GPIO.OUT)
 GPIO.setup(LED_3_PIN, GPIO.OUT)
 GPIO.setup(BUTTON_PIN, GPIO.IN)
 
-# initialization of the state of all three LEDs
+# initial the state of all three LEDs
 GPIO.output(LED_1_PIN, GPIO.LOW)
 GPIO.output(LED_2_PIN, GPIO.LOW)
 GPIO.output(LED_3_PIN, GPIO.LOW)
