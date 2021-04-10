@@ -20,7 +20,7 @@ def index():
 def check_push_button_state():
     if GPIO.input(BUTTON_PIN) == GPIO.HIGH:
         return "Button is pressed"
-    # here, the condition of else could be omitted because it is implied
+    # here, the condition of else could be omitted because it is kind of implied
     # else:
     #     return "Button is not pressed"
     return "Button is not pressed"
