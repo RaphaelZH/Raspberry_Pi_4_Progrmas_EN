@@ -13,16 +13,25 @@ app = Flask(__name__)
 for pin in LED_PIN_LIST:
     GPIO.output(pin, GPIO.LOW)
 
+
+# create some routes
+# create the route of the home page
 @app.route("/")
 def index():
     return "Hello from Flask"
 
+
+# create a new route to check the state of the push button
 @app.route("/push-button")
 def check_push_button_state():
     if GPIO.input(BUTTON_PIN) == GPIO.HIGH:
         return "Button is pressed"
     return "Button is not pressed"
 
+
+# create some new routes to trigger LED
+# here, <int:led_pin> will give the pin number of LED, such as 17, 27 or 22
+# here, <int:led_state> will give the states of LED by number, basically, 0 for GPIO low, 1 for GPIO high
 @app.route("/led/<int:led_pin>/state/<int:led_state>")
 def trigger_led(led_pin, led_state):
     if not led_pin in LED_PIN_LIST:
