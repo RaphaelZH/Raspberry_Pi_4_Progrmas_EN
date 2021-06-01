@@ -23,7 +23,7 @@ def update_photo_log_file(photo_file_name):
         f.write("\n")
 
 
-# remove log file if it already exists
+# remove the log file if it already exists
 if os.path.exists(LOG_FILE_NAME):
     os.remove(LOG_FILE_NAME)
     print("Log file removed.")
