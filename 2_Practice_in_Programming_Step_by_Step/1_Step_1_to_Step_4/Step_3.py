@@ -1,6 +1,11 @@
 import RPi.GPIO as GPIO
 import time
 from picamera import PiCamera
+import os
+
+PIR_PIN = 4
+LED_PIN = 17
+LOG_FILE_NAME = "/home/pi/Camera/photo_logs.txt"
 
 
 def take_photo(camera):
@@ -11,8 +16,17 @@ def take_photo(camera):
     return file_name
 
 
-PIR_PIN = 4
-LED_PIN = 17
+def update_photo_log_file(photo_file_name):
+    # save the all file names into a log file when each time the program run
+    with open(LOG_FILE_NAME, "a") as f:
+        f.write(photo_file_name)
+        f.write("\n")
+
+
+# remove log file if it already exists
+if os.path.exists(LOG_FILE_NAME):
+    os.remove(LOG_FILE_NAME)
+    print("Log file removed.")
 
 # setup camera
 camera = PiCamera()
@@ -68,7 +82,8 @@ try:
             if time.time() - movement_timer > MOV_DETECT_TRESHOLD:
                 if time.time() - last_time_photo_taken > MIN_DURATION_BETWEEN_2_PHOTOS:
                     print("Take photo and send it by email")
-                    take_photo(camera)
+                    photo_file_name = take_photo(camera)
+                    update_photo_log_file(photo_file_name)
                     last_time_photo_taken = time.time()
 
         # renew the PIR state
