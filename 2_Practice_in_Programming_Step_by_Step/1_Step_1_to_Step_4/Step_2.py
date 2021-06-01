@@ -1,8 +1,28 @@
 import RPi.GPIO as GPIO
 import time
+from picamera import PiCamera
+
+FOLDER_NAME = "/home/pi/Camera"
+
+
+def take_photo(camera):
+    # name the photo by using Unix time
+    file_name = FOLDER_NAME + "/img_" + str(time.time()) + ".jpg"
+    camera.capture(file_name)
+    return file_name
+
 
 PIR_PIN = 4
 LED_PIN = 17
+
+# setup camera
+camera = PiCamera()
+camera.resolution = (720, 480)
+camera.rotation = 180
+# the camera needs at least 2 seconds to be initialized
+print("Waiting 2 seconds to init the camera...")
+time.sleep(2)
+print("Camera setup OK.")
 
 # setup GPIOs
 GPIO.setmode(GPIO.BCM)
@@ -21,6 +41,8 @@ last_time_photo_taken = 0
 # setup some default values
 MOV_DETECT_TRESHOLD = 3.0
 MIN_DURATION_BETWEEN_2_PHOTOS = 60.0
+
+print("Everything has been setup.")
 
 try:
     while True:
@@ -46,6 +68,7 @@ try:
             if time.time() - movement_timer > MOV_DETECT_TRESHOLD:
                 if time.time() - last_time_photo_taken > MIN_DURATION_BETWEEN_2_PHOTOS:
                     print("Take photo and send it by email")
+                    take_photo(camera)
                     last_time_photo_taken = time.time()
 
         # renew the PIR state
