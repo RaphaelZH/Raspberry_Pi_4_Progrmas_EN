@@ -30,5 +30,5 @@ def check_movement():
     else:
         message = "Nothing new"
     return message
-        
+
 app.run(host="0.0.0.0")
